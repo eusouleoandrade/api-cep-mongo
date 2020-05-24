@@ -8,12 +8,14 @@ A Web Api consome um ou mais serviço de busca de endereço com CEP. O endpoint 
 Foi usado o .NET Framework 4.7.2 como Web Api. O reporitório é persistido no MongoDB.
 
 ## Arquitetura
-A arquitetura foi desenvolvida respeitando os princípios do SOLID. O service foi dinsponibilizado para consumir qualquer serviço de CEP, basta usar as interfaces, assinar os métodos e usar a injeção de dependência.
+A arquitetura foi desenvolvida respeitando os princípios do SOLID. 
 
 ## Repositório
-A implementação possibilita a inserção de outros repositórios. Está implementado o MongoDB, e os arquivos da Collection encontra-se no path Data\Mongo\db.
+O projeto está implementado com o MongoDB, mas a estrutura possibilita a inserção de diversos repositórios.
 
 ## Serviços de CEP implementados
+A solução consulta os serviços listados abaixo. A estrutura possibilita a inserção de outros serviços para consulta de Cep.
+
 [ViaCep](https://viacep.com.br/)
 
 [WebManiaCep](https://webmaniabr.com/docs/rest-api-cep-ibge/)
