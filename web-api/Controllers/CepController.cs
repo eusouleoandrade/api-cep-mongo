@@ -1,6 +1,7 @@
 ﻿using apiService;
 using apiService.Interfaces;
 using cepService;
+using Exceptions;
 using Mappers;
 using MongoRepository;
 using System;
@@ -25,9 +26,13 @@ namespace web_api.Controllers
                 AdressCepViewModel viewModel = AdressCepMapper.ToAdressCepViewModel(_adressCepService.Get(cep), _adressCepService.GetCount(cep));
                 return Ok(viewModel.ToJObject());
             }
-            catch (Exception ex)
+            catch (ApiException ex)
             {
                 return BadRequest(ex.Message);
+            }
+            catch (Exception)
+            {
+                return BadRequest();
             }
         }
     }

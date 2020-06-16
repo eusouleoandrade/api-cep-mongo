@@ -1,4 +1,5 @@
-﻿using Mappers;
+﻿using Exceptions;
+using Mappers;
 using models;
 using Newtonsoft.Json;
 using System;
@@ -22,16 +23,28 @@ namespace cepService
         }
         public override AdressCep GetAdressCep(string cep)
         {
-            HttpResponseMessage response = _client.GetAsync(String.Format("{0}/?app_key={1}&app_secret={2}", cep, _appKey, _appSecret)).Result;
-
-            if (response.IsSuccessStatusCode)
+            try
             {
-                var adressWMCep = JsonConvert.DeserializeObject<AdressWebManiaCep>(response.Content.ReadAsStringAsync().Result);
+                HttpResponseMessage response = _client.GetAsync(String.Format("{0}/?app_key={1}&app_secret={2}", cep, _appKey, _appSecret)).Result;
 
-                return AdressWebManiaCepMapper.ToAdressCep(adressWMCep);
+                if (response.IsSuccessStatusCode)
+                {
+                    var adressWMCep = JsonConvert.DeserializeObject<AdressWebManiaCep>(response.Content.ReadAsStringAsync().Result);
+
+                    return AdressWebManiaCepMapper.ToAdressCep(adressWMCep);
+                }
+                else
+                    return null;
             }
-            else
-                return null;
+            catch (Exception ex)
+            {
+                throw new WebManiaCepServiceException(_exceptionMessage, ex);
+            }
+            finally
+            {
+                if (_client != null)
+                    _client.Dispose();
+            }
         }
     }
 }

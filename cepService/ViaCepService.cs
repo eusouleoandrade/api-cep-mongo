@@ -1,4 +1,5 @@
-﻿using Mappers;
+﻿using Exceptions;
+using Mappers;
 using models;
 using Newtonsoft.Json;
 using System;
@@ -21,16 +22,28 @@ namespace cepService
 
         public override AdressCep GetAdressCep(string cep)
         {
-            HttpResponseMessage response = _client.GetAsync(cep + "/json/").Result;
-
-            if (response.IsSuccessStatusCode)
+            try
             {
-                var adressViaCep = JsonConvert.DeserializeObject<AdressViaCep>(response.Content.ReadAsStringAsync().Result);
+                HttpResponseMessage response = _client.GetAsync($"{cep}/json/").Result;
 
-                return AdressViaCepMapper.ToAdressCep(adressViaCep);
+                if (response.IsSuccessStatusCode)
+                {
+                    var adressViaCep = JsonConvert.DeserializeObject<AdressViaCep>(response.Content.ReadAsStringAsync().Result);
+
+                    return AdressViaCepMapper.ToAdressCep(adressViaCep);
+                }
+                else
+                    return null;
             }
-            else
-                return null;
+            catch (Exception ex)
+            {
+                throw new ViaCepServiceException(_exceptionMessage, ex);
+            }
+            finally
+            {
+                if (_client != null)
+                    _client.Dispose();
+            }
         }
     }
 }
