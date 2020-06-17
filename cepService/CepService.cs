@@ -6,7 +6,7 @@ namespace cepService
 {
     public abstract class CepService : ICepService
     {
-        protected readonly string _exceptionMessage = "Zip service unavailable.";
+        protected readonly string _exceptionMessage = "CEP service unavailable.";
 
         public abstract AdressCep GetAdressCep(string cep);
 

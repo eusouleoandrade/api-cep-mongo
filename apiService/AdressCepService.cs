@@ -1,6 +1,7 @@
 ﻿using apiService.Interfaces;
 using cepService.Interfaces;
 using CommonRepository.Interfaces;
+using Exceptions;
 using models;
 using System;
 
@@ -20,12 +21,12 @@ namespace apiService
         public AdressCep Get(string cep)
         {
             if (!_cepService.IsValid(cep))
-                throw new Exception("Invalid CEP");
+                throw new AdressCepServiceException("Invalid CEP");
 
             AdressCep adressCep = _cepService.GetAdressCep(cep);
 
-            if (!adressCep.IsValid())
-                throw new Exception("Failed to query CEP");
+            if (adressCep == null || !adressCep.IsValid())
+                throw new AdressCepServiceException("Failed to query CEP");
 
             Save(adressCep);
 
@@ -35,15 +36,15 @@ namespace apiService
         public long GetCount(string cep)
         {
             if (!_cepService.IsValid(cep))
-                throw new Exception("Invalid CEP");
+                throw new AdressCepServiceException("Invalid CEP");
 
             return _repository.GetCount(cep);
         }
 
         public void Save(AdressCep adressCep)
         {
-            if (!adressCep.IsValid())
-                throw new Exception("Failed to query CEP");
+            if (adressCep == null || !adressCep.IsValid())
+                throw new AdressCepServiceException("Failed to query CEP");
 
             _repository.Save(Sanitize(adressCep));
         }

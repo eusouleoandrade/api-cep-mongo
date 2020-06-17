@@ -15,11 +15,22 @@ namespace cepService
 
         public WebManiaCepService()
         {
-            _client = new HttpClient
+            try
             {
-                BaseAddress = new Uri("https://webmaniabr.com/api/1/cep/")
-            };
-            _client.DefaultRequestHeaders.Accept.Add(new System.Net.Http.Headers.MediaTypeWithQualityHeaderValue("application/json"));
+                _client = new HttpClient
+                {
+                    BaseAddress = new Uri("https://webmaniabr.com/api/1/cep/")
+                };
+                _client.DefaultRequestHeaders.Accept.Add(new System.Net.Http.Headers.MediaTypeWithQualityHeaderValue("application/json"));
+            }
+            catch (Exception ex)
+            {
+                if (_client != null)
+                    _client.Dispose();
+
+                throw new WebManiaCepServiceException(_exceptionMessage, ex);
+            }
+
         }
         public override AdressCep GetAdressCep(string cep)
         {

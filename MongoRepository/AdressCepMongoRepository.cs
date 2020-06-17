@@ -1,4 +1,5 @@
 ﻿using CommonRepository.Interfaces;
+using Exceptions;
 using models;
 using MongoDB.Driver;
 
@@ -8,13 +9,29 @@ namespace MongoRepository
     {
         public long GetCount(string cep)
         {
-            return _dataBase.GetCollection<AdressCep>("adressCep").CountDocuments(c => c.Cep == cep);
+            try
+            {
+                return _dataBase.GetCollection<AdressCep>("adressCep").CountDocuments(c => c.Cep == cep);
+            }
+            catch (System.Exception ex)
+            {
+                throw new MongoRepositoryException(_exceptionMessage, ex);
+            }
+            
         }
 
         public void Save(AdressCep adressCep)
         {
-            var collection = _dataBase.GetCollection<AdressCep>("adressCep");
-            collection.InsertOne(adressCep);
+            try
+            {
+                var collection = _dataBase.GetCollection<AdressCep>("adressCep");
+                collection.InsertOne(adressCep);
+            }
+            catch (System.Exception ex)
+            {
+                throw new MongoRepositoryException(_exceptionMessage, ex);
+            }
+
         }
     }
 }

@@ -8,6 +8,7 @@ namespace MongoRepository
         private readonly string _connectionString = Properties.Settings.Default.connectionStringApiCepDB;
         protected IMongoClient _client;
         protected IMongoDatabase _dataBase;
+        protected readonly string _exceptionMessage = "Failed to connect the database.";
 
         protected MongoRepository()
         {
@@ -18,7 +19,6 @@ namespace MongoRepository
             // SSL connection
             //MongoClientSettings settings = MongoClientSettings.FromUrl(new MongoUrl(_connectionString));
             //settings.SslSettings = new SslSettings() { EnabledSslProtocols = SslProtocols.Tls12 };
-
             //_client = new MongoClient(settings);
             //_dataBase = _client.GetDatabase("apicepdb");
         }

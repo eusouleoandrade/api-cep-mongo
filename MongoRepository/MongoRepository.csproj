@@ -93,6 +93,10 @@
       <Project>{c4dc7727-d0a7-4d09-b14a-90c808355004}</Project>
       <Name>CommonRepository</Name>
     </ProjectReference>
+    <ProjectReference Include="..\Exceptions\Exceptions.csproj">
+      <Project>{3B4A6697-8663-4F5E-B299-1D57E34E0B37}</Project>
+      <Name>Exceptions</Name>
+    </ProjectReference>
     <ProjectReference Include="..\models\models.csproj">
       <Project>{2315103c-7e2a-4e44-93ae-79d9d691aabf}</Project>
       <Name>models</Name>

@@ -13,11 +13,22 @@ namespace cepService
 
         public ViaCepService()
         {
-            _client = new HttpClient
+            try
             {
-                BaseAddress = new Uri("https://viacep.com.br/ws/")
-            };
-            _client.DefaultRequestHeaders.Accept.Add(new System.Net.Http.Headers.MediaTypeWithQualityHeaderValue("application/json"));
+                _client = new HttpClient
+                {
+                    BaseAddress = new Uri("https://viacep.com.br/ws/")
+                };
+                _client.DefaultRequestHeaders.Accept.Add(new System.Net.Http.Headers.MediaTypeWithQualityHeaderValue("application/json"));
+            }
+            catch (Exception ex)
+            {
+                if (_client != null)
+                    _client.Dispose();
+
+                throw new MongoRepositoryException(_exceptionMessage, ex);
+            }
+
         }
 
         public override AdressCep GetAdressCep(string cep)
