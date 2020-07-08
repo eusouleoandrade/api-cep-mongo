@@ -3,6 +3,7 @@ using Mappers;
 using models;
 using Newtonsoft.Json;
 using System;
+using System.Configuration;
 using System.Net.Http;
 
 namespace cepService
@@ -10,8 +11,8 @@ namespace cepService
     public class WebManiaCepService : CepService
     {
         private readonly HttpClient _client;
-        private readonly string _appKey = Properties.Settings.Default.appKeyWebManiaCep;
-        private readonly string _appSecret = Properties.Settings.Default.appSecretWeManiaCep;
+        private readonly string _appKey = ConfigurationManager.AppSettings.Get("appKeyWebManiaCep");
+        private readonly string _appSecret = ConfigurationManager.AppSettings.Get("appSecretWebManiaCep");
 
         public WebManiaCepService()
         {

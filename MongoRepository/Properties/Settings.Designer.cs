@@ -22,14 +22,5 @@ namespace MongoRepository.Properties {
                 return defaultInstance;
             }
         }
-        
-        [global::System.Configuration.ApplicationScopedSettingAttribute()]
-        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-        [global::System.Configuration.DefaultSettingValueAttribute("mongodb://127.0.0.1/")]
-        public string connectionStringApiCepDB {
-            get {
-                return ((string)(this["connectionStringApiCepDB"]));
-            }
-        }
     }
 }

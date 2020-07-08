@@ -22,7 +22,7 @@ namespace web_api.Controllers
         {
             try
             {
-                _adressCepService = new AdressCepService(new ViaCepService(), new AdressCepMongoRepository());
+                _adressCepService = new AdressCepService(new WebManiaCepService(), new AdressCepMongoRepository());
                 AdressCepViewModel viewModel = AdressCepMapper.ToAdressCepViewModel(_adressCepService.Get(cep), _adressCepService.GetCount(cep));
                 return Ok(viewModel.ToJObject());
             }

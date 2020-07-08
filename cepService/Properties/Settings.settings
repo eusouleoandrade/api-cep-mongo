@@ -1,12 +1,5 @@
 ﻿<?xml version='1.0' encoding='utf-8'?>
-<SettingsFile xmlns="http://schemas.microsoft.com/VisualStudio/2004/01/settings" CurrentProfile="(Default)" GeneratedClassNamespace="cepService.Properties" GeneratedClassName="Settings">
+<SettingsFile xmlns="http://schemas.microsoft.com/VisualStudio/2004/01/settings" CurrentProfile="(Default)">
   <Profiles />
-  <Settings>
-    <Setting Name="appKeyWebManiaCep" Type="System.String" Scope="Application">
-      <Value Profile="(Default)">ikyU0WL1M0X6BhyIRO0dAsRglTA81HSr</Value>
-    </Setting>
-    <Setting Name="appSecretWeManiaCep" Type="System.String" Scope="Application">
-      <Value Profile="(Default)">WcnaDY2xNKWehyAKUW63rlEvDPj42JCw0cXNZHwampaBRcFf</Value>
-    </Setting>
-  </Settings>
+  <Settings />
 </SettingsFile>

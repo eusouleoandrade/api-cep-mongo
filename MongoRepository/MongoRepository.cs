@@ -1,11 +1,12 @@
 ﻿using MongoDB.Driver;
+using System.Configuration;
 using System.Security.Authentication;
 
 namespace MongoRepository
 {
     public abstract class MongoRepository
     {
-        private readonly string _connectionString = Properties.Settings.Default.connectionStringApiCepDB;
+        private readonly string _connectionString = ConfigurationManager.ConnectionStrings["MongoDB"].ConnectionString;
         protected IMongoClient _client;
         protected IMongoDatabase _dataBase;
         protected readonly string _exceptionMessage = "Failed to connect the database.";
