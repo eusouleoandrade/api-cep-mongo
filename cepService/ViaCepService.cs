@@ -26,7 +26,7 @@ namespace cepService
                 if (_client != null)
                     _client.Dispose();
 
-                throw new MongoRepositoryException(_exceptionMessage, ex);
+                throw new ViaCepServiceException(ex);
             }
 
         }
@@ -48,7 +48,7 @@ namespace cepService
             }
             catch (Exception ex)
             {
-                throw new ViaCepServiceException(_exceptionMessage, ex);
+                throw new ViaCepServiceException(ex);
             }
             finally
             {

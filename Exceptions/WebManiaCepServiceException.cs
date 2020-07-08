@@ -15,5 +15,9 @@ namespace Exceptions
         public WebManiaCepServiceException(string message, Exception innerException) : base(message, innerException)
         {
         }
+
+        public WebManiaCepServiceException(Exception innerException) : base("WebManiaCep service unavailable.", innerException)
+        {
+        }
     }
 }

@@ -15,7 +15,7 @@ namespace MongoRepository
             }
             catch (System.Exception ex)
             {
-                throw new MongoRepositoryException(_exceptionMessage, ex);
+                throw new MongoRepositoryException(ex);
             }
             
         }
@@ -29,7 +29,7 @@ namespace MongoRepository
             }
             catch (System.Exception ex)
             {
-                throw new MongoRepositoryException(_exceptionMessage, ex);
+                throw new MongoRepositoryException(ex);
             }
 
         }

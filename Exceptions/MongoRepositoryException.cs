@@ -1,8 +1,4 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace Exceptions
 {
@@ -17,6 +13,10 @@ namespace Exceptions
         }
 
         public MongoRepositoryException(string message, Exception innerException) : base(message, innerException)
+        {
+        }
+
+        public MongoRepositoryException(Exception innerException) : base("Failed to connect the database.", innerException)
         {
         }
     }

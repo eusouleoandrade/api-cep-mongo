@@ -25,7 +25,7 @@ namespace apiService
 
             AdressCep adressCep = _cepService.GetAdressCep(cep);
 
-            if (adressCep == null || !adressCep.IsValid())
+            if (!adressCep.IsValid())
                 throw new AdressCepServiceException("Failed to query CEP");
 
             Save(adressCep);
@@ -43,7 +43,7 @@ namespace apiService
 
         public void Save(AdressCep adressCep)
         {
-            if (adressCep == null || !adressCep.IsValid())
+            if (!adressCep.IsValid())
                 throw new AdressCepServiceException("Failed to query CEP");
 
             _repository.Save(Sanitize(adressCep));

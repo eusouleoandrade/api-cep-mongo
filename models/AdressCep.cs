@@ -25,7 +25,7 @@ namespace models
 
         public bool IsValid()
         {
-            return !String.IsNullOrEmpty(Cep);
+            return this != null && !String.IsNullOrEmpty(Cep);
         }
     }
 }

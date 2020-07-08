@@ -9,7 +9,6 @@ namespace MongoRepository
         private readonly string _connectionString = ConfigurationManager.ConnectionStrings["MongoDB"].ConnectionString;
         protected IMongoClient _client;
         protected IMongoDatabase _dataBase;
-        protected readonly string _exceptionMessage = "Failed to connect the database.";
 
         protected MongoRepository()
         {

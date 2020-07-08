@@ -29,7 +29,7 @@ namespace cepService
                 if (_client != null)
                     _client.Dispose();
 
-                throw new WebManiaCepServiceException(_exceptionMessage, ex);
+                throw new WebManiaCepServiceException(ex);
             }
 
         }
@@ -50,7 +50,7 @@ namespace cepService
             }
             catch (Exception ex)
             {
-                throw new WebManiaCepServiceException(_exceptionMessage, ex);
+                throw new WebManiaCepServiceException(ex);
             }
             finally
             {

@@ -15,5 +15,9 @@ namespace Exceptions
         public ViaCepServiceException(string message, Exception innerException) : base(message,innerException)
         {
         }
+
+        public ViaCepServiceException(Exception innerException) : base("ViaCep service unavailable.", innerException)
+        {
+        }
     }
 }
