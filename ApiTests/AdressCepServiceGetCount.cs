@@ -10,7 +10,7 @@ namespace ApiTests
 {
     public class AdressCepServiceGetCount
     {
-        [Fact]
+        //[Fact]
         public void ReturnPositiveValue()
         {
             // Arranje
