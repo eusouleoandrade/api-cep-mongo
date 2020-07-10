@@ -39,11 +39,12 @@ namespace ApiTests
 
             Assert.Equal(jsonExpectedResult, jsonResult);
         }
-        [Fact]
-        public void ReturnNullIfCepIsInvalid()
+        [Theory]
+        [InlineData("53080A00")]
+        [InlineData("53080")]
+        public void ReturnNullIfCepIsInvalid(string cep)
         {
             // Arranje
-            string cep = "53080A00";
             _cepService = new ViaCepService();
 
             // Act
