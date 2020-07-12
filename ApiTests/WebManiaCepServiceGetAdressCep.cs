@@ -2,10 +2,6 @@
 using cepService.Interfaces;
 using models;
 using Newtonsoft.Json;
-using System;
-using System.Collections.Generic;
-using System.Configuration;
-using System.Text;
 using Xunit;
 
 namespace ApiTests
