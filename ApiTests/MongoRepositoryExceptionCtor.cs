@@ -9,7 +9,7 @@ namespace ApiTests
     public class MongoRepositoryExceptionCtor
     {
         private MongoRepositoryException _exception;
-        private string _message = "Failed to connect the database.";
+        private readonly string _message = "Failed to connect the database.";
 
         [Fact]
         public void CheckCreationObject()
