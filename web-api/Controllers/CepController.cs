@@ -25,17 +25,6 @@ namespace web_api.Controllers
             {
                 _adressCepService = new AdressCepService(new WebManiaCepService(), new AdressCepMongoRepository());
                 AdressCepViewModel viewModel = _adressCepService.Get(cep).ToAdressCepViewModel(_adressCepService.GetCount(cep));
-                JObject objectJsonExpectedResult = new JObject();
-                objectJsonExpectedResult.Add("bairro", "Rio Doce");
-                objectJsonExpectedResult.Add("cep", "53080800");
-                objectJsonExpectedResult.Add("cidade", "Olinda");
-                objectJsonExpectedResult.Add("complemento", "IV Etapa");
-                objectJsonExpectedResult.Add("count", "10");
-                objectJsonExpectedResult.Add("estado", "PE");
-                objectJsonExpectedResult.Add("gia", "");
-                objectJsonExpectedResult.Add("ibge", "");
-                objectJsonExpectedResult.Add("rua", "Avenida Das Garças");
-                objectJsonExpectedResult.Add("unidade", "");
                 return Ok(viewModel.ToJObject());
             }
             catch (ApiException ex)
