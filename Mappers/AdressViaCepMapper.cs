@@ -3,9 +3,9 @@ using models;
 
 namespace Mappers
 {
-    public class AdressViaCepMapper
+    public static class AdressViaCepMapper
     {
-        public static AdressCep ToAdressCep(AdressViaCep model)
+        public static AdressCep ToAdressCep(this AdressViaCep model)
         {
             IMapper mapper = AdressViaCepForAdressCepConfig().CreateMapper();
             AdressCep adressCep = mapper.Map<AdressCep>(model);

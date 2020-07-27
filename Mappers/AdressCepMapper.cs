@@ -6,7 +6,7 @@ namespace Mappers
 {
     public static class AdressCepMapper
     {
-        public static AdressCepViewModel ToAdressCepViewModel(AdressCep model, long count)
+        public static AdressCepViewModel ToAdressCepViewModel(this AdressCep model, long count)
         {
             IMapper mapper = AdressCepForAdressCepViewModelConfig().CreateMapper();
             AdressCepViewModel vm = mapper.Map<AdressCepViewModel>(model);
@@ -14,7 +14,7 @@ namespace Mappers
             return vm;
         }
 
-        public static AdressCep ToModel(AdressCepViewModel viewModel)
+        public static AdressCep ToModel(this AdressCepViewModel viewModel)
         {
             IMapper mapper = AdressCepForAdressCepViewModelConfig().CreateMapper();
             AdressCep model = mapper.Map<AdressCep>(viewModel);

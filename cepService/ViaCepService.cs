@@ -39,9 +39,9 @@ namespace cepService
 
                 if (response.IsSuccessStatusCode)
                 {
-                    var adressViaCep = JsonConvert.DeserializeObject<AdressViaCep>(response.Content.ReadAsStringAsync().Result);
+                    var adressViaCepResponse = JsonConvert.DeserializeObject<AdressViaCep>(response.Content.ReadAsStringAsync().Result);
 
-                    return AdressViaCepMapper.ToAdressCep(adressViaCep);
+                    return adressViaCepResponse.ToAdressCep();
                 }
                 else
                     return null;

@@ -37,13 +37,13 @@ namespace cepService
         {
             try
             {
-                HttpResponseMessage response = _client.GetAsync(String.Format("{0}/?app_key={1}&app_secret={2}", cep, _appKey, _appSecret)).Result;
+                HttpResponseMessage response = _client.GetAsync($"{cep}/?app_key={_appKey}&app_secret={_appSecret}").Result;
 
                 if (response.IsSuccessStatusCode)
                 {
-                    var adressWMCep = JsonConvert.DeserializeObject<AdressWebManiaCep>(response.Content.ReadAsStringAsync().Result);
+                    var adressWMCepResponse = JsonConvert.DeserializeObject<AdressWebManiaCep>(response.Content.ReadAsStringAsync().Result);
 
-                    return AdressWebManiaCepMapper.ToAdressCep(adressWMCep);
+                    return adressWMCepResponse.ToAdressCep();
                 }
                 else
                     return null;
